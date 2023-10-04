@@ -17,6 +17,9 @@ export const getTaks = async (req, res) => {
   }
   return res.json(result.rows[0]);
 };
+export const updateTaks = (req, res) => {
+  res.send("ACtualizando tarea");
+};
 export const createTaks = async (req, res, next) => {
   const { title, description } = req.body;
   //db insert
@@ -35,9 +38,14 @@ export const createTaks = async (req, res, next) => {
     next(error);
   }
 };
-export const updateTaks = (req, res) => {
-  res.send("ACtualizando tarea");
-};
-export const deleteTaks = (req, res) => {
-  res.send("Eliminando tarea");
+
+export const deleteTaks = async (req, res) => {
+const result = await pool.query("DELETE FROM task WHERE id = $1", [req.params.id]);
+
+  if(result.rowCount ===0){
+    return res.status(404).json({
+      message: "That task with that ID does not exist."
+    })
+  }
+  return res.sendStatus(204);
 };

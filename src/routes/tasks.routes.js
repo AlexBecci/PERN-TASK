@@ -13,6 +13,6 @@ router.get("/tasks", getAllTasks);
 router.get("/tasks/:id", getTaks);
 router.post("/tasks", createTaks);
 router.put("/tasks/:id", updateTaks);
-router.delete("/tasks:id", deleteTaks);
+router.delete("/tasks/:id", deleteTaks);
 
 export default router;
