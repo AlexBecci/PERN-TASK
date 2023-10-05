@@ -6,13 +6,13 @@ import {
   getTaks,
   updateTaks,
 } from "../controllers/tasks.controller.js";
-
+import { isAuth } from "../middlewares/auth.middleware.js";
 const router = Router();
 
-router.get("/tasks", getAllTasks);
-router.get("/tasks/:id", getTaks);
-router.post("/tasks", createTaks);
-router.put("/tasks/:id", updateTaks);
-router.delete("/tasks/:id", deleteTaks);
+router.get("/tasks", isAuth, getAllTasks);
+router.get("/tasks/:id", isAuth, getTaks);
+router.post("/tasks", isAuth, createTaks);
+router.put("/tasks/:id", isAuth, updateTaks);
+router.delete("/tasks/:id", isAuth, deleteTaks);
 
 export default router;
