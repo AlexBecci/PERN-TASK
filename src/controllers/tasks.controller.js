@@ -6,6 +6,7 @@ export const getAllTasks = async (req, res, next) => {
 };
 
 export const getTaks = async (req, res) => {
+  
   const result = await pool.query("SELECT * FROM task WHERE id = $1", [
     req.params.id,
   ]);

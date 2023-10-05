@@ -10,7 +10,6 @@ export const signup = async (req, res) => {
   const { name, email, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log(hashedPassword);
 
     const result = await pool.query(
       "INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *",
@@ -18,12 +17,15 @@ export const signup = async (req, res) => {
     );
     const token = await createAccessToken({ id: result.rows[0].id });
 
-    console.log(result);
+    res.cookie('token', token,{
 
-    // return res.json(result.rows[0]);
-    return res.json({
-      token: token,
-    });
+      httpOnly: true,
+      // secure: true,
+      sameSite: 'none',
+      maxAge: 24 * 60 * 60 * 1000 // 1 day
+    })
+    return res.json(result.rows[0]);
+
   } catch (error) {
     if (error.code === "23505") {
       return res.status(400).json({
