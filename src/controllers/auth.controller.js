@@ -2,8 +2,35 @@ import bcrypt from "bcrypt";
 import { pool } from "../db.js";
 import { createAccessToken } from "../libs/jwt.js";
 
-export const signin = (req, res) => {
-  res.send("Ingresando");
+export const signin = async (req, res) => {
+  const { email, password } = req.body;
+
+  const result = await pool.query("SELECT * FROM users WHERE email = $1", [
+    email,
+  ]);
+
+  if (result.rowCount === 0) {
+    return res.status(400).json({
+      message: "Email i dont exist",
+    });
+  }
+
+  const validPassword = await bcrypt.compare(password, result.rows[0].password);
+  if (!validPassword) {
+    return res.status(400).json({
+      message: " password incorrect",
+    });
+  }
+
+  const token = await createAccessToken({ id: result.rows[0].id });
+  res.cookie("token", token, {
+    httpOnly: true,
+    // secure: true,
+    sameSite: "none",
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
+  });
+  return res.json(result.rows[0]);
+
 };
 
 export const signup = async (req, res) => {
@@ -17,15 +44,13 @@ export const signup = async (req, res) => {
     );
     const token = await createAccessToken({ id: result.rows[0].id });
 
-    res.cookie('token', token,{
-
+    res.cookie("token", token, {
       httpOnly: true,
       // secure: true,
-      sameSite: 'none',
-      maxAge: 24 * 60 * 60 * 1000 // 1 day
-    })
+      sameSite: "none",
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
     return res.json(result.rows[0]);
-
   } catch (error) {
     if (error.code === "23505") {
       return res.status(400).json({
