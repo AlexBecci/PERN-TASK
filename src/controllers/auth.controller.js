@@ -30,7 +30,6 @@ export const signin = async (req, res) => {
     maxAge: 24 * 60 * 60 * 1000, // 1 day
   });
   return res.json(result.rows[0]);
-
 };
 
 export const signup = async (req, res) => {
@@ -60,7 +59,8 @@ export const signup = async (req, res) => {
   }
 };
 export const signout = (req, res) => {
-  res.send("Cerrando sesion");
+  res.clearCookie("token");
+  res.sendStatus(200);
 };
 export const profile = (req, res) => {
   res.send("Perfil de usuario");
