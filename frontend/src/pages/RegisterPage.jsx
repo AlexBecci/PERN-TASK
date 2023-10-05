@@ -1,6 +1,7 @@
-import { Button, Card, Input } from "../components/ui";
+import { Button, Card, Input, Label } from "../components/ui";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { Link } from "react-router-dom";
 function RegisterPage() {
   const {
     register,
@@ -35,17 +36,22 @@ function RegisterPage() {
         <h3 className="text-2xl font-bold"> Register</h3>
 
         <form onSubmit={onSubmit}>
+        <Label htmlFor="name">name</Label>
+
           <Input
             placeholder=" Enter your fullname"
             {...register("name", { required: true })}
           />
           {errors.name && <p className="text-red-500">Name is required</p>}
+          <Label htmlFor="email">email</Label>
+
           <Input
             type="email"
             placeholder=" Enter your email"
             {...register("email", { required: true })}
           />
           {errors.email && <p className="text-red-500">email is required</p>}
+          <Label htmlFor="password">password</Label>
 
           <Input
             type="password"
@@ -57,6 +63,10 @@ function RegisterPage() {
           )}
 
           <Button>Register</Button>
+          <div className="flex justify-between my-4">
+            <p> Already have an account?</p>
+            <Link to='/login' className="font-bold"> Sign in</Link>
+          </div>
         </form>
       </Card>
     </div>
