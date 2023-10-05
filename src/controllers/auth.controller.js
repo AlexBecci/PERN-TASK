@@ -32,7 +32,7 @@ export const signin = async (req, res) => {
   return res.json(result.rows[0]);
 };
 
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   const { name, email, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -56,12 +56,16 @@ export const signup = async (req, res) => {
         message: "Email already exist",
       });
     }
+    next(error);
   }
 };
 export const signout = (req, res) => {
   res.clearCookie("token");
   res.sendStatus(200);
 };
-export const profile = (req, res) => {
-  res.send("Perfil de usuario");
+export const profile = async (req, res) => {
+  const result = await pool.query("SELECT * FROM users WHERE id = $1", [
+    req.userId,
+  ]);
+  return res.json(result.rows[0]);
 };
