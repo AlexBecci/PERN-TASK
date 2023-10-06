@@ -1,20 +1,19 @@
 import { Button, Card, Input, Label } from "../components/ui";
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 function RegisterPage() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { signup } = useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
-    const res = await axios.post("http://localhost:3000/api/signup", data, {
-      withCredentials: true,
-    });
-
-    console.log(res)
+    await signup(data);
+    navigate("/profile");
     /*
     const response = await fetch("http://localhost:3000/api/signup", {
       method: `POST`,
@@ -36,7 +35,7 @@ function RegisterPage() {
         <h3 className="text-2xl font-bold"> Register</h3>
 
         <form onSubmit={onSubmit}>
-        <Label htmlFor="name">name</Label>
+          <Label htmlFor="name">name</Label>
 
           <Input
             placeholder=" Enter your fullname"
@@ -65,7 +64,10 @@ function RegisterPage() {
           <Button>Register</Button>
           <div className="flex justify-between my-4">
             <p> Already have an account?</p>
-            <Link to='/login' className="font-bold"> Sign in</Link>
+            <Link to="/login" className="font-bold">
+              {" "}
+              Sign in
+            </Link>
           </div>
         </form>
       </Card>

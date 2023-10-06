@@ -1,7 +1,8 @@
 import axios from "axios";
 import { Button, Card, Input, Label } from "../components/ui";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function LoginPage() {
   const {
@@ -9,12 +10,13 @@ function LoginPage() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { signin } = useAuth();
+  const navigate = useNavigate();
+
 
   const onSubmit = handleSubmit(async (data) => {
-    const res = await axios.post("http://localhost:3000/api/signin", data, {
-      withCredentials: true,
-    });
-    console.log(res);
+    await signin(data);
+    navigate("/profile")
   });
   return (
     <div className="h-[calc(100vh-64px)] flex items-center justify-center">
