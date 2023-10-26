@@ -1,21 +1,38 @@
 import { Textarea, Input, Card, Label, Button } from "../components/ui";
 import { useForm } from "react-hook-form";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { createTaskRequest } from "../api/tasks.api";
-
+import { useState } from "react";
 function TaskFormPage() {
-  const { register, handleSubmit, formState: {errors} } = useForm();
-  const navigate = useNavigate(); 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-
+  const [postError, setPostError] = useState([]);
+  const navigate = useNavigate();
+  
   const onSubmit = handleSubmit(async (data) => {
-    const res = await createTaskRequest(data);
-    navigate("/tasks")
+    try {
+      const res = await createTaskRequest(data);
+      navigate("/tasks");
+    } catch (error) {
+      if (error.response) {
+        setPostError([error.response.data.message]);
+      }
+    }
   });
 
   return (
     <div className="flex h-[80vh] justify-center items-center">
       <Card>
+        {
+        postError.map((error, i) => (
+          <p className="text-red-500" key={i}>
+            {error}
+          </p>
+        ))}
         <h2 className="text-3xl font-bold">Crate Task</h2>
         <form onSubmit={onSubmit}>
           <Label htmlFor="title">Title</Label>
