@@ -16,9 +16,11 @@ function TaskFormPage() {
   const { createTask } = useTasks();
 
   const onSubmit = handleSubmit(async (data) => {
-    const task = await createTask(data);
-    navigate("/tasks");
+    await createTask(data);
 
+    if (data) {
+      navigate("/tasks");
+    }
   });
 
   return (
