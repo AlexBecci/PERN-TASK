@@ -1,5 +1,5 @@
 import axios from "../api/axios";
-import { createContext, useState, useContext,useEffect } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import Cookie from "js-cookie";
 
 export const AuthContext = createContext();
@@ -46,19 +46,27 @@ export function AuthProvider({ children }) {
     }
   };
 
-  useEffect(()=>{
-    if(Cookie.get('token')){
+  const signout = async ()=>{
+    await axios.post('/signout');
+    setUser(null);
+    setIsAuth(false);
+  }
+  useEffect(() => {
+    if (Cookie.get("token")) {
       //get profile
-      axios.get("/profile").then((res)=>{
-        setUser(res.data);
-        setIsAuth(true);
-      }).catch((err)=>{
-        console.log(err);
-        setUser(null);
-        setIsAuth(false);
-      })
+      axios
+        .get("/profile")
+        .then((res) => {
+          setUser(res.data);
+          setIsAuth(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          setUser(null);
+          setIsAuth(false);
+        });
     }
-  })
+  },[]);
   return (
     <AuthContext.Provider
       value={{
@@ -67,6 +75,7 @@ export function AuthProvider({ children }) {
         errors,
         signup,
         signin,
+        signout,
       }}
     >
       {children}
