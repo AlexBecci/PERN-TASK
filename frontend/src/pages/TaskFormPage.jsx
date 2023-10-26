@@ -13,25 +13,30 @@ function TaskFormPage() {
   } = useForm();
 
   const navigate = useNavigate();
-  const { createTask,loadTask, errors: taskErrors } = useTasks();
+  const { createTask, updateTask, loadTask, errors: taskErrors } = useTasks();
   const params = useParams();
 
   const onSubmit = handleSubmit(async (data) => {
-    await createTask(data);
-    if (data) {
+    let task;
+    if (!params.id) {
+      task = await createTask(data);
+    } else {
+      task = await updateTask(params.id, data);
+    }
+    console.log(task);
+    if (task) {
       navigate("/tasks");
     }
   });
 
-
-  useEffect(()=>{
-    if(params.id){
-      loadTask(params.id).then(task=> {
-        setValue('title', task.title);
-        setValue('description', task.description)
-      })
+  useEffect(() => {
+    if (params.id) {
+      loadTask(params.id).then((task) => {
+        setValue("title", task.title);
+        setValue("description", task.description);
+      });
     }
-  },[])
+  }, []);
 
   return (
     <div className="flex h-[80vh] justify-center items-center">
@@ -41,7 +46,9 @@ function TaskFormPage() {
             {error}
           </p>
         ))}
-        <h2 className="text-3xl font-bold">{params.id ? "Edit Task": "Crate Task"}</h2>
+        <h2 className="text-3xl font-bold">
+          {params.id ? "Edit Task" : "Crate Task"}
+        </h2>
         <form onSubmit={onSubmit}>
           <Label htmlFor="title">Title</Label>
           <Input
@@ -62,7 +69,7 @@ function TaskFormPage() {
             {...register("description")}
           ></Textarea>
 
-          <Button>{params.id ? "Edit Task": "Crate Task"}</Button>
+          <Button>{params.id ? "Edit Task" : "Crate Task"}</Button>
         </form>
       </Card>
     </div>
