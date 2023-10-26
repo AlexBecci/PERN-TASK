@@ -15,7 +15,12 @@ import TaskFormPage from "./pages/TaskFormPage";
 import TasksPage from "./pages/TasksPage";
 
 function App() {
-  const { isAuth } = useAuth();
+  const { isAuth,loading } = useAuth();
+  if(loading){
+    return(
+      <h1>LOADING....</h1>
+    )
+  }
   return (
     <>
       <Navbar />
@@ -40,7 +45,7 @@ function App() {
           >
             <Route path="/tasks" element={<TasksPage />} />
             <Route path="/tasks/new" element={<TaskFormPage />} />
-            <Route path="/tasks/1/edit" element={<TaskFormPage />} />
+            <Route path="/tasks/:id/edit" element={<TaskFormPage />} />
           </Route>
 
           <Route path="/profile" element={<ProfilePage />} />
