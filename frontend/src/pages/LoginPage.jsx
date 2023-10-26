@@ -4,22 +4,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function LoginPage() {
-  const { register, handleSubmit } = useForm();
-  const { signin, errors } = useAuth();
+  const { register, handleSubmit, formState: {errors} } = useForm();
+  const { signin, errors: loginErrors } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
     const user = await signin(data);
 
     if (user) {
-      navigate("/profile");
+      navigate("/tasks");
     }
   });
   return (
     <div className="h-[calc(100vh-10rem)] flex items-center justify-center">
       <Card>
-        {errors &&
-          errors.map((err) => (
+        {loginErrors &&
+          loginErrors.map((err) => (
             <p className="text-white p-2 text-center bg-red-800"> {err}</p>
           ))}
 
@@ -32,6 +32,7 @@ function LoginPage() {
             placeholder=" Enter your email"
             {...register("email", { required: true })}
           />
+           {errors.email && (<p className="text-red-500">Email is required</p>)}
 
           <Label htmlFor="password">password</Label>
           <Input
@@ -39,6 +40,7 @@ function LoginPage() {
             placeholder=" Enter your password"
             {...register("password", { required: true })}
           />
+           {errors.password && (<p className="text-red-500">Password is required</p>)}
 
           <Button>Sign in</Button>
 

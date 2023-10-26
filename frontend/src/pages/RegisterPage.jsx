@@ -15,7 +15,7 @@ function RegisterPage() {
     const user = await signup(data);
     if(user){
 
-      navigate("/profile");
+      navigate("/tasks");
     }
     /*
     const response = await fetch("http://localhost:3000/api/signup", {

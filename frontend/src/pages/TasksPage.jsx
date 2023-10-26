@@ -8,7 +8,13 @@ function TasksPage() {
   useEffect(() => {
     loadTasks();
   }, []);
-
+  if(tasks.length == 0){
+    return(
+      <div>
+        No Task FOund
+      </div>
+    )
+  }
   return (
     <div className="grid grid-cols-3 gap-2">
       {tasks.map((task) => (

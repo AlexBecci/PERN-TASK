@@ -61,16 +61,23 @@ export function AuthProvider({ children }) {
         .then((res) => {
           setUser(res.data);
           setIsAuth(true);
-          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
           setUser(null);
           setIsAuth(false);
-          setLoading(false);
         });
     }
+    setLoading(false);
   }, []);
+
+  useEffect(() => {
+    const clean = setTimeout(() => {
+      setErrors(null);
+    }, 5000);
+
+    return () => clearTimeout(clean);
+  }, [errors]);
   return (
     <AuthContext.Provider
       value={{
@@ -80,7 +87,7 @@ export function AuthProvider({ children }) {
         signup,
         signin,
         signout,
-        loading
+        loading,
       }}
     >
       {children}
