@@ -8,12 +8,15 @@ function RegisterPage() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signup } = useAuth();
+  const { signup,errors: signupErrors } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
-    await signup(data);
-    navigate("/profile");
+    const user = await signup(data);
+    if(user){
+
+      navigate("/profile");
+    }
     /*
     const response = await fetch("http://localhost:3000/api/signup", {
       method: `POST`,
@@ -32,6 +35,10 @@ function RegisterPage() {
   return (
     <div className="h-[calc(100vh-64px)] flex items-center justify-center">
       <Card>
+      {signupErrors &&
+          signupErrors.map((err) => (
+            <p className="text-white p-2 text-center bg-red-800"> {err}</p>
+          ))}
         <h3 className="text-2xl font-bold"> Register</h3>
 
         <form onSubmit={onSubmit}>
