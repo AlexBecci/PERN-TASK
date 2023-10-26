@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Button, Card, Input, Label } from "../components/ui";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,7 +16,7 @@ function LoginPage() {
     }
   });
   return (
-    <div className="h-[calc(100vh-64px)] flex items-center justify-center">
+    <div className="h-[calc(100vh-10rem)] flex items-center justify-center">
       <Card>
         {errors &&
           errors.map((err) => (
