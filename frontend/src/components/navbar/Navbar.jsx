@@ -19,12 +19,12 @@ function Navbar() {
           <>
             {privateRoutes.map(({ path, name, icon }) => (
               <li
-                className={` text-slate-300 border-2 rounded-full hover:underline  border-slate-200 px-2 sm:px-4 py-1 ${
+                className={` text-slate-300 border-2 rounded-full hover:underline   border-slate-200 px-2 sm:px-4 py-1 ${
                   location.pathname == path && "bg-sky-700 "
                 }`}
                 key={path}
               >
-                <Link to={path}>
+                <Link className="flex items-center" to={path}>
                   {icon}
 
                   <span className="hidden sm:block">{name}</span>
