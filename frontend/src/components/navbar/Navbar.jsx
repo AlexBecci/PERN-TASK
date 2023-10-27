@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <nav className="bg-zinc-950 flex justify-between px-20 py-4">
       <Link to={"/"}>
-        <h1>Pern stack</h1>
+        <h1>PrioList</h1>
       </Link>
       <ul className="flex  gap-x-2">
         {isAuth

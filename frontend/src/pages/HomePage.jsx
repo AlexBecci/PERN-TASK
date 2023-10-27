@@ -1,14 +1,16 @@
 import { useAuth } from "../context/AuthContext";
 import { Card } from "../components/ui";
-
+import { ItemsCard } from "../components/Home/ItemsCard";
+import HomeInit from "../components/Home/homeInit/HomeInit";
+import LoginRegister from "../components/Home/loginRegister/LoginRegister"
 function HomePage() {
   const data = useAuth();
   return (
     <div>
       <Card>
-
-      <h1 className="text-3xl font-bold my-4">Home Page</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil aliquid omnis blanditiis distinctio consequatur, suscipit praesentium autem illo quam aperiam porro quae hic facilis, alias nisi voluptate rem illum ratione!</p>
+        <HomeInit />
+        <LoginRegister/>
+        <ItemsCard />
       </Card>
     </div>
   );
