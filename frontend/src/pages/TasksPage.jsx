@@ -16,7 +16,7 @@ function TasksPage() {
     )
   }
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 mx-auto px-2">
       {tasks.map((task) => (
         <TaskCard key={task.id} task={task} />
       ))}

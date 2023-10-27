@@ -10,12 +10,12 @@ const {deleteTask} = useTasks();
 const navigate = useNavigate();
 
   return (
-    <Card className="px-8 py-4">
+    <Card className="px-8 py-4  mx-8 my-12 flex flex-col items-center justify-center border-2 rounded-md">
       <div>
         <h1 className="text-2xl font-bold">{task.title}</h1>
         <p>{task.description}</p>
       </div>
-      <div className="my-2 flex justify-end gap-x-2">
+      <div className="my-2 flex justify-center gap-x-2">
         <Button onClick={()=>navigate( `/tasks/${task.id}/edit`)}>editar</Button>
         <Button className='bg-red-500 hover:bg-red-400' onClick={async()=> {
             if(window.confirm("Estas seguro de eliminar esta tarea?")){
