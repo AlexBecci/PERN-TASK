@@ -15,7 +15,7 @@ function NoTaskFound() {
         </div>
         <div className="mt-5 max-w-3xl text-center mx-auto">
           <p className="text-lg text-gray-300 ">
-            Para comenzar, sientete libre de crar la que gustes
+            Para comenzar, sientete libre de crear la que gustes
           </p>
         </div>
 
