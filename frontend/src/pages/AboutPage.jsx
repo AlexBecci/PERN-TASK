@@ -1,67 +1,48 @@
 import alexImg from "../img/alex.png";
+import Card from "../components/about/Card";
 
 function AboutPage() {
   return (
     <section className="text-gray-200 body-font">
-  <div className="container px-5 py-24 mx-auto flex flex-wrap">
-    <div className="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
-      <img alt="feature" className="object-cover object-center h-full w-full" src="https://dummyimage.com/460x500"/>
-    </div>
-    <div className="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
-      <div className="flex flex-col mb-10 lg:items-start items-center">
-        <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-6 h-6" viewBox="0 0 24 24">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-          </svg>
+      <div className="container px-5 py-24 mx-auto">
+        <div className="flex flex-col text-center w-full mb-20">
+          <h2 className="text- sm:text-lg text-sky-500 tracking-widest font-medium title-font mb-1">
+            Hola, soy Alex
+          </h2>
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-zinc-100">
+            Un desarrollador junior apasionado por la tecnología y las
+            soluciones digitales
+          </h1>
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+            A pesar de estar comenzando mi viaje en el mundo IT, he tenido la
+            oportunidad de aprender y trabajar con diversas tecnologías y
+            herramientas que me han permitido comprender la versatilidad y el
+            potencial del desarrollo software. Mi curiosidad insaciable y mi deseo de
+            aprender constantemente me motivan a enfrentar nuevos desafíos y
+            mejorar mis habilidades cada día. Mi objetivo es crear soluciones
+            funcionales y estéticamente agradables, que no solo cumplan con las
+            expectativas, sino que las superen. Si buscas a alguien
+            comprometido, proactivo y dispuesto a sumergirse de lleno en
+            cualquier proyecto, ¡aquí estoy!
+          </p>
+          <br />
+          <br />
+          <h2 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-sky-500">
+          No dudes en conectarte conmigo
+          </h2>
         </div>
-        <div className="flex-grow">
-          <h2 className="text-gray-100 text-lg title-font font-medium mb-3">Shooting Stars</h2>
-          <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-          <a className="mt-3 text-indigo-500 inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
+        <div className="flex flex-wrap">
+          <Card title={"Linkedin"}description={"Conectemos en las redes! Sígueme y mantente al día con mis últimos proyectos, aprendizajes y aventuras en el mundo de la tecnología."} link={"https://www.linkedin.com/in/alex-becci-82551a22b/"} />
+          <Card title={"Twitter"}description={"Para más contenido, trucos y consejos sobre desarrollo, ¡sígueme en mis redes! Juntos exploramos, aprendemos y crecemos en este emocionante mundo IT."} link={"https://twitter.com/besisikun"} />
+          <Card title={"Github"}description={"No te pierdas las actualizaciones, tutoriales y detrás de escena de mis proyectos. ¡Sígueme en GITHUB y seamos parte de esta emocionante travesía tecnológica!"} link={"https://github.com/AlexBecci"} />
+          <Card title={"Instagram"}description={"Te interesa el desarrollo de software y la tecnología? ¡Yo también! Vamos a conectarnos en redes sociales y compartir nuestro entusiasmo."} link={"https://www.instagram.com/becci.ale/"} />
+          
         </div>
+        <button className="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+          Button
+        </button>
       </div>
-      <div className="flex flex-col mb-10 lg:items-start items-center">
-        <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-6 h-6" viewBox="0 0 24 24">
-            <circle cx="6" cy="6" r="3"></circle>
-            <circle cx="6" cy="18" r="3"></circle>
-            <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-          </svg>
-        </div>
-        <div className="flex-grow">
-          <h2 className="text-gray-100 text-lg title-font font-medium mb-3">The Catalyzer</h2>
-          <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-          <a className="mt-3 text-indigo-500 inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div className="flex flex-col mb-10 lg:items-start items-center">
-        <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-6 h-6" viewBox="0 0 24 24">
-            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-        </div>
-        <div className="flex-grow">
-          <h2 className="text-gray-100 text-lg title-font font-medium mb-3">Neptune</h2>
-          <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-          <a className="mt-3 text-indigo-500 inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
   );
 }
 
