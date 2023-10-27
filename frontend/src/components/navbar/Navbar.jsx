@@ -44,7 +44,7 @@ function Navbar() {
         ) : (
           publicRoutes.map(({ path, name }) => (
             <li
-              className={`text-sm sm:text-base text-slate-100 border-2 border-opacity-20 rounded-full hover:underline  border-slate-200 px-2 sm:px-4 py-1 ${
+              className={`text-sm sm:text-sm text-slate-100 border-2 border-opacity-20 rounded-full hover:underline  border-slate-200 px-2 sm:px-4 py-1 ${
                 location.pathname == path && "bg-sky-700 "
               }`}
               key={path}

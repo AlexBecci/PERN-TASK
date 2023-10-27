@@ -16,7 +16,7 @@ const navigate = useNavigate();
         <p>{task.description}</p>
       </div>
       <div className="my-2 flex justify-center gap-x-2">
-        <Button onClick={()=>navigate( `/tasks/${task.id}/edit`)}>editar</Button>
+        <Button className="bg-sky-500 hover:bg-sky-400" onClick={()=>navigate( `/tasks/${task.id}/edit`)}>editar</Button>
         <Button className='bg-red-500 hover:bg-red-400' onClick={async()=> {
             if(window.confirm("Estas seguro de eliminar esta tarea?")){
                 deleteTask(task.id)

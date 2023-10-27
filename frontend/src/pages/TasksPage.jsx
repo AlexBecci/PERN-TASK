@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import TaskCard from "../components/tasks/TaskCard";
 import { useTasks } from "../context/TaskContext";
+import NoTaskFound from "../components/tasks/NoTaskFound";
 function TasksPage() {
   const { tasks, loadTasks } = useTasks();
 
@@ -10,9 +11,7 @@ function TasksPage() {
   }, []);
   if(tasks.length == 0){
     return(
-      <div>
-        No Task FOund
-      </div>
+        <NoTaskFound/>
     )
   }
   return (
