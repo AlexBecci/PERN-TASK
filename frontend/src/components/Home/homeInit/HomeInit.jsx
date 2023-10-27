@@ -13,15 +13,15 @@ export default function HomeInit() {
           <p className="mt-3 text-zinc-100 ">
           Nuestra herramienta te ayuda a mantener un registro claro de tus tareas pendientes, permitiéndote enfocarte en lo que realmente importa.
           </p>
-          <p className="mt-5  items-center gap-x-2 font-medium text-blue-200 ">
+          <p className="mt-5 text-sm sm:text-base  items-center gap-x-2 font-medium text-blue-200 ">
           Diseñado para ti
             
           </p>
-          <p className="mt-5  items-center gap-x-2 font-medium text-blue-200 ">
+          <p className="mt-5 text-sm sm:text-base  items-center gap-x-2 font-medium text-blue-200 ">
           Prioriza tus tareas según su importancia y urgencia.
             
           </p>
-          <p className="mt-5  items-center gap-x-2 font-medium text-blue-200 ">
+          <p className="mt-5 text-sm sm:text-base  items-center gap-x-2 font-medium text-blue-200 ">
           Crea tu primera tarea
             
           </p>
