@@ -4,7 +4,7 @@ import {BiTask,BiArchive  } from "react-icons/bi";
 
 export default function HomeInit() {
   return (
-    <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-16 mx-auto">
       <div className="grid md:grid-cols-2 gap-12">
         <div className="lg:w-3/4 ">
           <h2 className="text-3xl text-zinc-100 font-bold lg:text-4xl ">
